@@ -1,0 +1,3 @@
+[submodule "GraphUtils"]
+	path = GraphUtils
+	url = git@github.com:Alanzote/GraphUtils.git

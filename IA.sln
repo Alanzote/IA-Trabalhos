@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphUtils", "GraphUtils\GraphUtils.csproj", "{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IA", "IA\IA.csproj", "{08CE3181-A35A-4F70-BB89-4C0C356351AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD5151AD-D3AA-45EF-B1D4-EAE17925721F}
+	EndGlobalSection
+EndGlobal
