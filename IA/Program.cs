@@ -2,6 +2,51 @@
 using GraphUtils;
 using System.Drawing;
 
+Graph GN = new Graph();
+
+Node N0 = new Node<Tuple<int, int>>("N0", Tuple.Create(50, 50));
+Node N1 = new Node<Tuple<int, int>>("N1", Tuple.Create(100, 100));
+Node N2 = new Node<Tuple<int, int>>("N2", Tuple.Create(200, 100));
+Node N3 = new Node<Tuple<int, int>>("N3", Tuple.Create(150, 200));
+Node N4 = new Node<Tuple<int, int>>("N4", Tuple.Create(150, 130));
+Node N5 = new Node<Tuple<int, int>>("N5", Tuple.Create(250, 180));
+Node N6 = new Node<Tuple<int, int>>("N6", Tuple.Create(300, 150));
+Node N7 = new Node<Tuple<int, int>>("N7", Tuple.Create(100, 200));
+
+GN.AddNode(N0);
+GN.AddNode(N1);
+GN.AddNode(N2);
+GN.AddNode(N3);
+GN.AddNode(N4);
+GN.AddNode(N5);
+GN.AddNode(N6);
+GN.AddNode(N7);
+
+GN.ConnectNode(N0, N1, 1);
+GN.ConnectNode(N1, N3, 1);
+GN.ConnectNode(N3, N2, 10);
+GN.ConnectNode(N2, N1, 1);
+GN.ConnectNode(N2, N4, 1);
+GN.ConnectNode(N3, N5, 1);
+GN.ConnectNode(N5, N6, 1);
+GN.ConnectNode(N6, N2, 1);
+GN.ConnectNode(N5, N4, 1);
+GN.ConnectNode(N4, N7, 1);
+
+GN.BreadthSearch(N7, N5, out List<Node> Path);
+
+GraphExtensions.PrintArrayOfNodes(Path, "Path found");
+
+Path.Clear();
+
+GN.DepthSearch(N7, N5, out Path);
+
+GraphExtensions.PrintArrayOfNodes(Path, "Path found");
+
+GN.Display();
+
+return;
+
 // Const miles_dat location.
 const string miles_dat = "./miles_dat.txt";
 
