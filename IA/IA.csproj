@@ -10,9 +10,4 @@
   <ItemGroup>
     <ProjectReference Include="..\GraphUtils\GraphUtils.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="miles_dat.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

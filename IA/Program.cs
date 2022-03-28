@@ -1,9 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿// Utilizar a Biblioteca criada durante a matéria de Grafos.
+// Originalmente em Java, transformado em C# por que eu tenho maior facilidade.
 using GraphUtils;
-using System.Drawing;
 
+// Criamos um Novo Grafo.
 Graph GN = new Graph();
 
+// Criamos os Nós, com as posições para a função Display().
+// Utilizado para ver os nós e suas conexões, em sí, esse valor é ignorado
+// nas buscas em largura e profundidade.
 Node N0 = new Node<Tuple<int, int>>("N0", Tuple.Create(50, 50));
 Node N1 = new Node<Tuple<int, int>>("N1", Tuple.Create(100, 100));
 Node N2 = new Node<Tuple<int, int>>("N2", Tuple.Create(200, 100));
@@ -13,6 +17,7 @@ Node N5 = new Node<Tuple<int, int>>("N5", Tuple.Create(250, 180));
 Node N6 = new Node<Tuple<int, int>>("N6", Tuple.Create(300, 150));
 Node N7 = new Node<Tuple<int, int>>("N7", Tuple.Create(100, 200));
 
+// Adicionamos os Nós ao nosso Grafo.
 GN.AddNode(N0);
 GN.AddNode(N1);
 GN.AddNode(N2);
@@ -22,6 +27,7 @@ GN.AddNode(N5);
 GN.AddNode(N6);
 GN.AddNode(N7);
 
+// Conectamos todos os Nós, passando o Custo de cada caminho.
 GN.ConnectNode(N0, N1, 1);
 GN.ConnectNode(N1, N3, 1);
 GN.ConnectNode(N3, N2, 10);
@@ -33,113 +39,60 @@ GN.ConnectNode(N6, N2, 1);
 GN.ConnectNode(N5, N4, 1);
 GN.ConnectNode(N4, N7, 1);
 
-GN.BreadthSearch(N7, N5, out List<Node> Path);
-
-GraphExtensions.PrintArrayOfNodes(Path, "Path found");
-
-Path.Clear();
-
-GN.DepthSearch(N7, N5, out Path);
-
-GraphExtensions.PrintArrayOfNodes(Path, "Path found");
-
+// Primeiro, vamos demonstrar para o Usuário a disposição dos nossos nós.
+// Para utilizar esse Display, de uma olhada no Readme.md do GraphUtils
+// pois é necessário as DLLs do SDL2 para conseguir rodar.
+// Se não quiser seguir com isso, só comentar essa linha.
 GN.Display();
 
-return;
+/// Assim que fechamos o display, está na hora de resolver as questões práticas.
+/// Sabemos que o Estado Final é o Carrinho estar presente em N0.
 
-// Const miles_dat location.
-const string miles_dat = "./miles_dat.txt";
+// Para isso, precisamos pedir os estado inicial para o usuário.
+Console.Write("Digite o Nome do Nó que você Quer como Estado Inicial: ");
+Node? NI = GN.FindWithLabel(Console.ReadLine()?.Trim()!);
 
-// Create New Graph;
-Graph G = new Graph();
+// Precisamos de um Nó Válido.
+if (NI == null)
+    throw new ArgumentNullException(nameof(NI));
 
-// Read the miles_dat.txt file.
-string[] MilesDat = File.ReadAllLines(miles_dat);
+// Executamos a Busca em Largura, saindo de NI indo para N0. (Questão 5)
+// Essa função eu já tinha implementado para Resolução de Problemas com Grafos.
+GN.BreadthSearch(NI, N0, out List<Node> Path);
 
-// List of all Cities and Current City.
-List<Node> Cities = new List<Node>();
-Node? City = null;
+// Demonstrar o nosso caminho.
+GraphExtensions.PrintArrayOfNodes(Path, "Caminho de Busca em Largura Encontrado para N0");
 
-// For Parsing.
-int i = 0;
+// Limpar o Path para a Próxima Busca.
+Path.Clear();
 
-// For Each Line...
-foreach (var Line in MilesDat) {
-	// Skip Comments.
-	if (Line.StartsWith("*"))
-		continue;
+// Executamos a Busca em Profundidade, saindo de NI indo para N0. (Questão 6)
+// Essa função eu já tinha implementado para Resolução de Problemas com Grafos.
+GN.DepthSearch(NI, N0, out Path);
 
-	// Check for Distances.
-	if (Regex.IsMatch(Line, "^\\d+")) {
-		// Split the Distances.
-		var Distances = Line.Split(" ").Select(x => int.Parse(x));
+// Demonstrar o nosso caminho.
+GraphExtensions.PrintArrayOfNodes(Path, "Caminho de Busca em Profundidade Encontrado para N0");
 
-		// For Each Distance.
-		foreach (var D in Distances) {
-			// Connect Nodes.
-			G.ConnectNode(City!, Cities[i], D);
+// Limpar o Path para a Próxima Busca.
+Path.Clear();
 
-			// Add I.
-			i += 1;
-		}
-	} else {
-		// Reset I.
-		i = 1;
+// Pedir o Limite para nossa Busca em Profundidade Limitada.
+int Limit = int.Parse(Console.ReadLine()?.Trim()!);
 
-		// Splt.
-		var Splt = Line.Split("[");
+// Executamos a Busca em Profundidade Limitada, saindo de NI indo para N0. (Questão 7)
+// Essa função eu adicionei um novo parametro na busca em profundidade para considerar um limite.
+// TODO: Create Parameter.
+GN.DepthSearch(NI, N0, out Path);
 
-		// Get Position.
-		var Pos = Splt.Last().Split("]").First().Split(",").Select(x => int.Parse(x));
+// Demostrar o nosso caminho.
+GraphExtensions.PrintArrayOfNodes(Path, "Caminho de Busca em Profundidade Limitada Encontrado para N0");
 
-		// Create City.
-		City = new Node<Tuple<int, int>>(Splt.First(), Tuple.Create((Pos.First() - 2672) / 7, (Pos.Last() - 7180) / 7));
+// Limpar o Path para a Próxima Busca.
+Path.Clear();
 
-		// Add City.
-		Cities.Insert(0, City);
+// Executamos a Busca em Aprofundamento Iterativo, saindo de NI indo para N0. (Questão 8)
+// Essa função é nova e foi implementada para esse TDE.
+// TODO: Create Function.
 
-		// Add Node.
-		G.AddNode(City);
-	}
-}
-
-// Grab All Nodes.
-var AllNodes = G.GetAllNodes();
-
-// Create a Random.
-Random Rand = new Random(1701);
-
-// Grab a Copy of it.
-var CopyNodes = new List<Node>(AllNodes).OrderBy(x => Rand.Next()).Take(10);
-
-// Remove all Copy Nodes.
-AllNodes.RemoveAll(x => CopyNodes.Contains(x));
-
-// For Each All Node...
-foreach (var Node in AllNodes)
-	G.RemoveNode(Node);
-
-// Grab all Connections.
-var AllConns = G.GetAllConnections();
-
-// Create new Random.
-Rand = new Random(1701);
-
-// Grab a Copy of it.
-var CopyConns = new List<Connection>(AllConns).OrderBy(x => Rand.Next()).Take(10);
-
-// Remove all Copy Conns.
-AllConns.RemoveAll(x => CopyConns.Contains(x));
-
-// For Each Connection...
-foreach (var Conn in AllConns)
-	G.DisconnectNode(Conn.NodeA, Conn.NodeB);
-
-// Get Yakima and Stringfield.
-var Yakima = G.FindWithLabel("Yakima, WA");
-var Springfield = G.FindWithLabel("Springfield, IL");
-
-//
-
-// Display the Graph.
-G.Display();
+// Demonstrar o nosso caminho.
+GraphExtensions.PrintArrayOfNodes(Path, "Caminho de Busca em Aprofundamento Iterativo Encontrado para N0");
