@@ -103,3 +103,10 @@ GN.IterativeDeepening(NI, NT, out Path, Limit);
 
 // Demonstrar o nosso caminho.
 GraphExtensions.PrintArrayOfNodes(Path, "Caminho de Busca em Aprofundamento Iterativo Encontrado para N0");
+
+// Notificar que estamos esperando analisar os resultados.
+Console.WriteLine();
+Console.Write("Pressione qualquer tecla para terminar...");
+
+// Esperar qualquer tecla.
+Console.ReadKey();
