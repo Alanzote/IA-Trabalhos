@@ -1,26 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1700.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphUtils", "GraphUtils\GraphUtils.csproj", "{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphUtils", "GraphUtils\GraphUtils.csproj", "{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IA", "IA\IA.csproj", "{08CE3181-A35A-4F70-BB89-4C0C356351AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IA", "IA\IA.csproj", "{08CE3181-A35A-4F70-BB89-4C0C356351AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Trabalho03|Any CPU = Trabalho03|Any CPU
+		Trabalho04|Any CPU = Trabalho04|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.ActiveCfg = Trabalho03|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.Build.0 = Trabalho03|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.ActiveCfg = Trabalho04|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.Build.0 = Trabalho04|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho03|Any CPU.ActiveCfg = Trabalho03|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho03|Any CPU.Build.0 = Trabalho03|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho04|Any CPU.ActiveCfg = Trabalho04|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho04|Any CPU.Build.0 = Trabalho04|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
