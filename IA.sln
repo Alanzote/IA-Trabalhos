@@ -9,14 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IA", "IA\IA.csproj", "{08CE
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Checkers|Any CPU = Checkers|Any CPU
 		Trabalho03|Any CPU = Trabalho03|Any CPU
 		Trabalho04|Any CPU = Trabalho04|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.ActiveCfg = Trabalho03|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.Build.0 = Trabalho03|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.ActiveCfg = Trabalho04|Any CPU
-		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.Build.0 = Trabalho04|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Checkers|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Checkers|Any CPU.Build.0 = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho03|Any CPU.Build.0 = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6266FA-C27F-4D26-874C-41B6B4C4FD3B}.Trabalho04|Any CPU.Build.0 = Debug|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Checkers|Any CPU.ActiveCfg = Checkers|Any CPU
+		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Checkers|Any CPU.Build.0 = Checkers|Any CPU
 		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho03|Any CPU.ActiveCfg = Trabalho03|Any CPU
 		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho03|Any CPU.Build.0 = Trabalho03|Any CPU
 		{08CE3181-A35A-4F70-BB89-4C0C356351AB}.Trabalho04|Any CPU.ActiveCfg = Trabalho04|Any CPU

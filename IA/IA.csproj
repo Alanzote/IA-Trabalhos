@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Trabalho04;Trabalho03</Configurations>
+    <Configurations>Trabalho04;Trabalho03;Checkers</Configurations>
   </PropertyGroup>
 
     <PropertyGroup Condition="$(Configuration) == 'Trabalho03'">
@@ -16,7 +16,26 @@
 		<StartupObject>Trabalho04</StartupObject>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(Configuration) == 'Checkers'">
+		<StartupObject>IA.Checkers.Checkers</StartupObject>
+	</PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\GraphUtils\GraphUtils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Checkers\King_Black.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Checkers\King_White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Checkers\Piece_White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Checkers\Piece_Black.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
