@@ -14,4 +14,13 @@ public class Piece {
         // Sets.
         Player = player;
     }
+
+    // Copia uma peça.
+    public Piece Copy() {
+        // Cria uma nova peça.
+        return new Piece(Player) {
+            // Copiando as informações.
+            IsKing = IsKing
+        };
+	}
 }

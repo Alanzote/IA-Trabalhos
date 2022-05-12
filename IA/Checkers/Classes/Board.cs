@@ -6,6 +6,12 @@ public class Board {
     // O tabuleiro é representado por uma matriz 8x8 de peças.
     public Piece?[,] Representation { get; private set; } = new Piece?[8, 8];
 
+    // Construtor para cópias.
+    private Board() {
+        // Cria a representação vazia do board.
+        Representation = new Piece?[8, 8];
+    }
+
     // Constructor.
     public Board(Player player0, Player player1) {
         // Criar a representação inicial do board.
@@ -137,14 +143,15 @@ public class Board {
     }
 
     // Executa um Movimento.
-    public void ExecuteMove(Move move) {
+    public void ExecuteMove(Move move, bool CountPoints = true) {
         // Buscamos a peça.
         Piece CachedPiece = Representation[move.InitialPosition.Item1, move.InitialPosition.Item2]!;
 
         // Para cada pulo..
         foreach (var x in move.Jumps) {
             // Adicionar ao score.
-            CachedPiece.Player.Score++;
+            if (CountPoints)
+                CachedPiece.Player.Score++;
 
             // Remove a peça.
             Representation[x.Item1, x.Item2] = null;
@@ -161,4 +168,92 @@ public class Board {
         if (move.FinalPosition.Item2 == KingY)
             CachedPiece.IsKing = true;
     }
+
+    // Calcula todos os movimentos para um jogador.
+    public List<Move> CalculateMovements(Player player) {
+        // Cria resultado.
+        List<Move> Results = new List<Move>();
+
+        // Loop em X no tabuleiro...
+        for (int x = 0; x < 8; x++) {
+            // Loop em Y no tabuleiro...
+            for (int y = 0; y < 8; y++) {
+                // Só aceitamos as peças do turno atual.
+                if (Representation[x, y]?.Player != player)
+                    continue;
+
+                // Calcular movimentos.
+                Results.AddRange(GetMoves(x, y) ?? new List<Move>());
+            }
+        }
+
+        // Retornamos o resultado.
+        return Results;
+    }
+
+    // Copia um board.
+    public Board Copy() {
+        // Cria o resultado.
+        var Result = new Board();
+
+        // Para cada X...
+        for (int x = 0; x < 8; x++) {
+            // Para cada Y...
+            for (int y = 0; y < 8; y++) {
+                // Se não temos peça aqui, ignora.
+                if (Representation[x, y] == null)
+                    continue;
+
+                // Copiamos a peça.
+                Result.Representation[x, y] = Representation[x, y]!.Copy();
+			}
+		}
+
+        // Retorna o Resultado.
+        return Result;
+	}
+
+    // Calcula a heurística de um movimento.
+    public int Heuristic(Move move, Player turn) {
+        // Create result.
+        int Result = 0;
+
+        // Amount of Kills is a Nice Heuristic.
+        Result += move.Jumps.Count;
+
+        /*
+        // Bonus points we are close to the King Location and we aren't a king yet!
+        if (!Representation[move.InitialPosition.Item1, move.InitialPosition.Item2]!.IsKing)
+            Result += 7 - Math.Abs((turn.Index == 0 ? 7 : 0) - move.FinalPosition.Item2);
+
+        // Distance to the Closest Piece.
+        int ClosestPiece = int.MaxValue;
+
+        // Loop board X.
+        for (int x = 0; x < 8; x++) {
+            // Loop board Y.
+            for (int y = 0; y < 8; y++) {
+                // Get Piece at position.
+                var PieceAtPos = Representation[x, y];
+
+                // If piece is not valid or it is from the current player, ignore.
+                if (PieceAtPos == null || PieceAtPos.Player == turn)
+                    continue;
+
+                // Calculate Distance.
+                int Distance = Math.Abs(move.InitialPosition.Item1 - x) + Math.Abs(move.InitialPosition.Item2 - y);
+
+                // If Distance is greater than closes distance set it.
+                if (Distance > ClosestPiece)
+                    ClosestPiece = Distance;
+			}
+		}
+
+        // Append to result the distance inverted.
+        Result += (8 - ClosestPiece) * 2;
+        */
+
+        // Return result.
+        return Result;
+	}
 }

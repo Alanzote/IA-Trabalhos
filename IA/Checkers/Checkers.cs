@@ -11,6 +11,10 @@ public static class Checkers {
     // Taxa de Renderização (está para 60 fps aproximadamente)
     private static readonly uint RefreshRate = 16;
 
+    // Tamanho da Janela e o calculado tamanho de slots.
+    private static readonly int WindowSize = 512;
+    private static readonly int SlotSize = WindowSize / 8;
+
     // Texturas das Peças.
     private static IntPtr Tex_Piece_Black;
     private static IntPtr Tex_Piece_White;
@@ -55,7 +59,7 @@ public static class Checkers {
         // Criamos a janela de Damas.
         var Window = SDL.SDL_CreateWindow("Damas",
             SDL.SDL_WINDOWPOS_CENTERED, SDL.SDL_WINDOWPOS_CENTERED,
-            1024, 1024, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+            WindowSize, WindowSize, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
 
         // Criamos o Renderizador.
         var Renderer = SDL.SDL_CreateRenderer(Window, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
@@ -106,8 +110,8 @@ public static class Checkers {
                         SDL.SDL_GetMouseState(out int mouseX, out int mouseY);
 
                         // Transformamos em índices ao campo.
-                        int PieceX = mouseX / 128;
-                        int PieceY = mouseY / 128;
+                        int PieceX = mouseX / SlotSize;
+                        int PieceY = mouseY / SlotSize;
 
                         // Validamos se temos uma peça neste lugar.
                         if (game.board.IsEmpty(PieceX, PieceY)) {
@@ -123,8 +127,9 @@ public static class Checkers {
                             break;
                         }
 
-                        // Se Estamos selecionando uma peça que não é nossa ou é da IA...
-                        if (game.board.Representation[PieceX, PieceY]!.Player != game.turn || game.turn.IsAI) {
+                        // Se Estamos selecionando uma peça que não é nossa...
+                        // Para IA, apenas 1 movimento é demonstrado em tela. Usuário deve selecionar ele.
+                        if (game.board.Representation[PieceX, PieceY]!.Player != game.turn) {
                             // Reiniciar seleção.
                             PossibleMovements = null;
                             SelectedPiece = null;
@@ -177,10 +182,10 @@ public static class Checkers {
 
                     // Cria a slot colorida.
                     SDL.SDL_Rect SlotRect = new SDL.SDL_Rect {
-                        x = x * 129,
-                        y = y * 129,
-                        w = 128,
-                        h = 128
+                        x = x * (SlotSize + 1),
+                        y = y * (SlotSize + 1),
+                        w = SlotSize,
+                        h = SlotSize
                     };
 
                     // Desenhamos a slot.
